@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="chatLog"
+            type="com.dongkyoo.gongzza.vos.ChatLog" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin2">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{chatLog.senderName}"
+            android:layout_marginBottom="@dimen/margin0"
+            android:layout_marginLeft="@dimen/margin2"
+            android:layout_alignTop="@id/titleImageView"
+            android:layout_toRightOf="@id/titleImageView"/>
+
+        <TextView
+            android:id="@+id/sent_at_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="@dimen/margin2"
+            android:layout_marginBottom="@dimen/margin0"
+            app:chat_absoluteSentAt="@{chatLog}"
+            android:layout_toRightOf="@id/speech_balloon"
+            android:layout_alignBottom="@id/speech_balloon"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_toEndOf="@id/sent_at_textView"
+            android:layout_alignBottom="@id/sent_at_textView"
+            app:chat_isError="@{chatLog}">
+
+            <ImageButton
+                android:id="@+id/resend_imageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher"/>
+
+            <ImageButton
+                android:id="@+id/cancel_imageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher"/>
+
+        </LinearLayout>
+
+        <com.dongkyoo.gongzza.customViews.speechBalloonView.SpeechBalloonView
+            android:id="@+id/speech_balloon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:text="@{chatLog.content}"
+            app:type="you"
+            android:layout_below="@id/name"
+            android:layout_toRightOf="@id/titleImageView"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/titleImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="30dp"
+            android:layout_marginRight="@dimen/margin2"
+            android:layout_gravity="center_vertical"
+            android:layout_alignParentLeft="true">
+
+            <ImageView
+                android:layout_width="@dimen/image_width"
+                android:layout_height="@dimen/image_height"
+                android:src="@mipmap/ic_launcher"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </RelativeLayout>
+
+</layout>

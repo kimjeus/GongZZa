@@ -29,7 +29,7 @@
                 android:layout_alignParentLeft="true">
 
                 <ImageView
-                    android:id="@+id/title_imageView"
+                    android:id="@+id/title_imageView_container"
                     android:layout_width="@dimen/image_width"
                     android:layout_height="@dimen/image_height"
                     android:src="@mipmap/ic_launcher"/>
@@ -58,7 +58,7 @@
                 android:textColor="#AAA"
                 android:layout_marginBottom="@dimen/margin2"/>
 
-            <androidx.recyclerview.widget.RecyclerView
+            <com.dongkyoo.gongzza.customViews.hashTagRecyclerView.HashTagRecyclerView
                 android:id="@+id/hash_tag_recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"

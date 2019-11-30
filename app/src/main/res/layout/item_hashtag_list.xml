@@ -9,8 +9,9 @@
     </data>
 
     <com.dongkyoo.gongzza.customViews.hashTagView.HashTagView
+        android:id="@+id/hashTagView"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:hashTag="@{hashTag}"/>
 
 </layout>

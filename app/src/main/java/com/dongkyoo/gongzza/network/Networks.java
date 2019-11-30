@@ -1,22 +1,39 @@
 package com.dongkyoo.gongzza.network;
 
 import android.content.Context;
-import android.util.Log;
 
-import java.io.File;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
 public class Networks {
 
-    public static String SERVER_URL = "http://114.206.137.114:8080";
+    public static String SERVER_URL = "http://n09app.cafe24.com/gongzza/";
+    private static OkHttpClient client = new OkHttpClient.Builder()
+            .connectTimeout(1, TimeUnit.MINUTES)
+            .readTimeout(30, TimeUnit.SECONDS)
+            .writeTimeout(30, TimeUnit.SECONDS)
+            .build();
+
     public static Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(SERVER_URL)
-            .addConverterFactory(JacksonConverterFactory.create())
+            .client(client)
+            .addConverterFactory(
+                    JacksonConverterFactory.create(
+//                            new ObjectMapper().setDateFormat(
+//                                    new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssSSS")
+//                            )
+                    )
+            )
             .build();
 
     static {
@@ -27,7 +44,14 @@ public class Networks {
             SERVER_URL = properties.getProperty("serverUrl");
             retrofit = new Retrofit.Builder()
                     .baseUrl(SERVER_URL)
-                    .addConverterFactory(JacksonConverterFactory.create())
+                    .client(client)
+                    .addConverterFactory(
+                            JacksonConverterFactory.create(
+//                                    new ObjectMapper().setDateFormat(
+//                                            new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssSSS")
+//                                    )
+                            )
+                    )
                     .build();
         } catch (Exception e) {
             e.printStackTrace();
@@ -42,7 +66,14 @@ public class Networks {
             SERVER_URL = properties.getProperty("serverUrl");
             retrofit = new Retrofit.Builder()
                     .baseUrl(SERVER_URL)
-                    .addConverterFactory(JacksonConverterFactory.create())
+                    .client(client)
+                    .addConverterFactory(
+                            JacksonConverterFactory.create(
+//                                    new ObjectMapper().setDateFormat(
+//                                            new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssSSS")
+//                                    )
+                            )
+                    )
                     .build();
             return retrofit;
         } catch (Exception e) {

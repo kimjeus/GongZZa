@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".chat.chattingRoom.ChatActivity"
     tools:openDrawer="right"
     android:id="@+id/drawerLayout">
 
@@ -49,32 +48,10 @@
                         android:textColor="#000"
                         android:layout_marginBottom="@dimen/margin2"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="김재우"
-                        android:layout_marginLeft="@dimen/margin1"
-                        android:layout_marginTop="@dimen/margin2"
-                        android:layout_marginBottom="@dimen/margin2"
-                        android:textSize="14sp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="이동규"
-                        android:layout_marginLeft="@dimen/margin1"
-                        android:layout_marginTop="@dimen/margin2"
-                        android:layout_marginBottom="@dimen/margin2"
-                        android:textSize="14sp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="황정현"
-                        android:layout_marginLeft="@dimen/margin1"
-                        android:layout_marginTop="@dimen/margin2"
-                        android:layout_marginBottom="@dimen/margin2"
-                        android:textSize="14sp"/>
+                    <ListView
+                        android:id="@+id/participants_listView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
 
                 </LinearLayout>
 

@@ -1,5 +1,8 @@
 package com.dongkyoo.gongzza.vos;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Objects;
 
 /**
@@ -13,7 +16,7 @@ import java.util.Objects;
  *  * CourseInfo 1 : 수요일 1시 30분 ~ 2시 45분
  *  * CourseInfo 2 : 금요일 1시 30분 ~ 2시 45분
  */
-public class Course {
+public class Course implements Parcelable {
 
     private int id;
     private String userId;
@@ -28,6 +31,13 @@ public class Course {
         this.userId = userId;
         this.name = name;
         this.professor = professor;
+    }
+
+    public Course(Parcel parcel) {
+        id = parcel.readInt();
+        userId = parcel.readString();
+        name = parcel.readString();
+        professor = parcel.readString();
     }
 
     public int getId() {
@@ -87,4 +97,29 @@ public class Course {
     public int hashCode() {
         return Objects.hash(id, userId, name, professor);
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(userId);
+        dest.writeString(name);
+        dest.writeString(professor);
+    }
+
+    public static Creator<Course> CREATOR = new Creator<Course>() {
+        @Override
+        public Course createFromParcel(Parcel source) {
+            return new Course(source);
+        }
+
+        @Override
+        public Course[] newArray(int size) {
+            return new Course[size];
+        }
+    };
 }

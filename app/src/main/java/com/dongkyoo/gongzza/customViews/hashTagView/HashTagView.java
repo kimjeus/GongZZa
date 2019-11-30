@@ -18,8 +18,10 @@ import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import androidx.core.content.ContextCompat;
 
 import com.dongkyoo.gongzza.R;
+import com.dongkyoo.gongzza.vos.HashTag;
 import com.google.android.material.card.MaterialCardView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,6 +34,10 @@ public class HashTagView extends MaterialCardView {
     private AppCompatAutoCompleteTextView autoCompleteTextView;
     private TextView textView;
     private ImageView cancelImageView;
+    private HashTag hashTag;
+    private List<OnCloseListener> closeListenerList = new ArrayList<>();
+    private List<OnEditModeChangeListener> editModeChangeListenerList = new ArrayList<>();
+
 
     public HashTagView(@NonNull Context context) {
         super(context);
@@ -72,25 +78,19 @@ public class HashTagView extends MaterialCardView {
             }
         });
 
-        autoCompleteTextView.setOnFocusChangeListener(new OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
-                    setEditMode(false);
-                }
-            }
-        });
-
         autoCompleteTextView.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.toString().contains(" ")) {
                     setEditMode(false);
+                }
+
+                if (hashTag != null) {
+                    hashTag.setTitle(s.toString());
                 }
             }
 
@@ -103,9 +103,18 @@ public class HashTagView extends MaterialCardView {
         cancelImageView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                setVisibility(View.GONE);
+                close();
             }
         });
+
+        setEditMode(true);
+    }
+
+    public void setHashTag(HashTag hashTag) {
+        this.hashTag = hashTag;
+
+        autoCompleteTextView.setText(hashTag.getTitle());
+        textView.setText(hashTag.getTitle());
     }
 
     public void setText(String text) {
@@ -113,8 +122,13 @@ public class HashTagView extends MaterialCardView {
         textView.setText(text);
     }
 
+    public String getText() {
+        return textView.getText().toString();
+    }
+
     public void setColor(String color) {
-        setCardBackgroundColor(Color.parseColor(color));
+        if (color != null)
+            setCardBackgroundColor(Color.parseColor(color));
     }
 
     /**
@@ -122,22 +136,39 @@ public class HashTagView extends MaterialCardView {
      * @param flag true: 수정 가능, false: 수정 불가
      */
     public void setEditMode(boolean flag) {
-        if (autoCompleteTextView.getText().length() == 0) {
-            setVisibility(GONE);
-            return;
+        for (OnEditModeChangeListener listener : editModeChangeListenerList) {
+            listener.onChange(flag);
         }
 
         if (flag) {
+            setVisibility(VISIBLE);
             autoCompleteTextView.setVisibility(VISIBLE);
             textView.setVisibility(GONE);
             cancelImageView.setVisibility(VISIBLE);
         } else {
+            if (autoCompleteTextView.getText().toString().trim().length() == 0) {
+                close();
+                return;
+            }
+
+            for (OnEditModeChangeListener listener : editModeChangeListenerList) {
+                listener.onPinned();
+            }
             textView.setText(autoCompleteTextView.getText());
 
             autoCompleteTextView.setVisibility(GONE);
             textView.setVisibility(VISIBLE);
             cancelImageView.setVisibility(GONE);
         }
+    }
+
+    private void close() {
+        for (OnCloseListener onCloseListener : closeListenerList) {
+            onCloseListener.onClose();
+        }
+        closeListenerList = new ArrayList<>();
+        editModeChangeListenerList = new ArrayList<>();
+        setVisibility(GONE);
     }
 
     /**
@@ -147,5 +178,22 @@ public class HashTagView extends MaterialCardView {
     public void setContentList(List<String> contentList) {
         HashSearchAdapter adapter = new HashSearchAdapter(context, android.R.layout.simple_dropdown_item_1line, contentList);
         autoCompleteTextView.setAdapter(adapter);
+    }
+
+    public void setCloseListenerList(OnCloseListener onCloseListener) {
+        closeListenerList.add(onCloseListener);
+    }
+
+    public void setOnEditModeChangeListener(OnEditModeChangeListener onEditModeChangeListener) {
+        editModeChangeListenerList.add(onEditModeChangeListener);
+    }
+
+    public interface OnCloseListener {
+        void onClose();
+    }
+
+    public interface OnEditModeChangeListener {
+        void onChange(boolean editMode);
+        void onPinned();
     }
 }

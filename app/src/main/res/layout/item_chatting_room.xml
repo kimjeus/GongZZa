@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="postChatDto"
+            type="com.dongkyoo.gongzza.dtos.PostChatDto" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin3">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/title_imageView_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="30dp"
+            android:layout_marginRight="@dimen/margin2"
+            android:layout_alignParentLeft="true">
+
+            <ImageView
+                android:id="@+id/title_imageView"
+                android:layout_width="@dimen/image_width"
+                android:layout_height="@dimen/image_height"
+                android:src="@mipmap/ic_launcher"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/title_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{postChatDto.title}"
+            android:textSize="20sp"
+            android:layout_toRightOf="@id/title_imageView_container"
+            android:layout_alignTop="@id/title_imageView_container"
+            android:textColor="#333"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/content_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{postChatDto.getLatestChatLog().content}"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/title_imageView_container"
+            android:layout_below="@id/title_textView"
+            android:textColor="#AAA"
+            android:layout_marginBottom="@dimen/margin2"/>
+
+        <TextView
+            android:id="@+id/datetime_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:chat_sentAt="@{postChatDto.getLatestChatLog()}"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/title_textView"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/title_textView"
+            android:gravity="right"
+            android:textColor="#AAA"/>
+
+    </RelativeLayout>
+
+
+</layout>

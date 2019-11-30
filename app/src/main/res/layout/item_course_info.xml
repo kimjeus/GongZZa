@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <Spinner
+        android:id="@+id/day_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/start_time_editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="시작 시간"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="~"
+        android:layout_marginLeft="@dimen/margin3"
+        android:layout_marginRight="@dimen/margin3"/>
+
+    <EditText
+        android:id="@+id/end_time_editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="종료 시간"/>
+
+</LinearLayout>

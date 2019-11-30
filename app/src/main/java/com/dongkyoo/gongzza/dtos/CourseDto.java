@@ -1,8 +1,12 @@
 package com.dongkyoo.gongzza.dtos;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.dongkyoo.gongzza.vos.Course;
 import com.dongkyoo.gongzza.vos.CourseInfo;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,7 +20,7 @@ import java.util.Objects;
  * 이런 데이터를 한 번에 표현하기 위함임
  * {@link com.dongkyoo.gongzza.network.CourseApi} 에서 파라미터가 Course인지 CourseDto 인지 잘 보면서 작업하길 바람
  */
-public class CourseDto extends Course {
+public class CourseDto extends Course implements Parcelable {
 
     private List<CourseInfo> courseInfoList;
 
@@ -26,6 +30,13 @@ public class CourseDto extends Course {
     public CourseDto(int id, String userId, String name, String professor, List<CourseInfo> courseInfoList) {
         super(id, userId, name, professor);
         this.courseInfoList = courseInfoList;
+    }
+
+    public CourseDto(Parcel parcel) {
+        super(parcel);
+
+        courseInfoList = new ArrayList<>();
+        parcel.readTypedList(courseInfoList, CourseInfo.CREATOR);
     }
 
     public List<CourseInfo> getCourseInfoList() {
@@ -56,4 +67,23 @@ public class CourseDto extends Course {
     public int hashCode() {
         return Objects.hash(super.hashCode(), courseInfoList);
     }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        super.writeToParcel(dest, flags);
+
+        dest.writeTypedList(courseInfoList);
+    }
+
+    public static Creator<CourseDto> CREATOR = new Creator<CourseDto>() {
+        @Override
+        public CourseDto createFromParcel(Parcel source) {
+            return new CourseDto(source);
+        }
+
+        @Override
+        public CourseDto[] newArray(int size) {
+            return new CourseDto[size];
+        }
+    };
 }

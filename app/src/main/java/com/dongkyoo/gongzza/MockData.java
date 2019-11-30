@@ -12,6 +12,7 @@ import com.dongkyoo.gongzza.vos.User;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -78,7 +79,7 @@ public class MockData {
 
     public static CourseInfo getMockCourseInfo() {
         Course course = getMockCourse();
-        return new CourseInfo(0, course.getId(), "12:00", "13:50", 1);
+        return new CourseInfo(0, course.getId(), new Date(), new Date(), Calendar.MONDAY);
     }
 
     public static Token getMockToken() {

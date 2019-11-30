@@ -1,5 +1,9 @@
 package com.dongkyoo.gongzza.vos;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -8,23 +12,33 @@ import java.util.Objects;
  *
  * You must see also {@link Course}
  */
-public class CourseInfo {
+public class CourseInfo implements Parcelable {
 
     private int id;
     private int courseId;
-    private String startTime;
-    private String endTime;
+    private Date startTime;
+    private Date endTime;
     private int day;
 
     public CourseInfo() {
+        startTime = new Date();
+        endTime = new Date();
     }
 
-    public CourseInfo(int id, int courseId, String startTime, String endTime, int day) {
+    public CourseInfo(int id, int courseId, Date startTime, Date endTime, int day) {
         this.id = id;
         this.courseId = courseId;
         this.startTime = startTime;
         this.endTime = endTime;
         this.day = day;
+    }
+
+    public CourseInfo(Parcel parcel) {
+        id = parcel.readInt();
+        courseId = parcel.readInt();
+        startTime = (Date) parcel.readSerializable();
+        endTime = (Date) parcel.readSerializable();
+        day = parcel.readInt();
     }
 
     public int getId() {
@@ -43,19 +57,19 @@ public class CourseInfo {
         this.courseId = courseId;
     }
 
-    public String getStartTime() {
+    public Date getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(String startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
-    public String getEndTime() {
+    public Date getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(String endTime) {
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 
@@ -94,4 +108,30 @@ public class CourseInfo {
     public int hashCode() {
         return Objects.hash(id, courseId, startTime, endTime, day);
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeInt(courseId);
+        dest.writeSerializable(startTime);
+        dest.writeSerializable(endTime);
+        dest.writeInt(day);
+    }
+
+    public static Creator<CourseInfo> CREATOR = new Creator<CourseInfo>() {
+        @Override
+        public CourseInfo createFromParcel(Parcel source) {
+            return new CourseInfo(source);
+        }
+
+        @Override
+        public CourseInfo[] newArray(int size) {
+            return new CourseInfo[size];
+        }
+    };
 }

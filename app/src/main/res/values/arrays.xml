@@ -17,5 +17,31 @@
         <item>토요일</item>
         <item>일요일</item>
     </string-array>
+
+    <string-array name="weekday_list">
+        <item>월</item>
+        <item>화</item>
+        <item>수</item>
+        <item>목</item>
+        <item>금</item>
+    </string-array>
+
+    <string-array name="color_list">
+        <item>#E0BBE4</item>
+        <item>#957DAD</item>
+        <item>#D291BC</item>
+        <item>#FEC8D8</item>
+        <item>#FFDFD3</item>
+        <item>#D99294</item>
+        <item>#F5B7B7</item>
+        <item>#F6CACB</item>
+        <item>#D2E9DA</item>
+        <item>#AFDAC1</item>
+        <item>#799FCB</item>
+        <item>#95B4CC</item>
+        <item>#AFC7D0</item>
+        <item>#EEF1E6</item>
+        <item>#FEC9C9</item>
+    </string-array>
     
 </resources>

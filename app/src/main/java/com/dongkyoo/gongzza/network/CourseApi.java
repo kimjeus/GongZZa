@@ -28,7 +28,7 @@ public interface CourseApi {
      * @param courseDto 수업 데이터
      * @return 수업 추가 성공 시 추가된 수업 객체가 리턴
      */
-    @POST("/courses")
+    @POST("/gongzza/courses")
     Call<CourseDto> insertCourse(@Body CourseDto courseDto);
 
     /**
@@ -37,7 +37,7 @@ public interface CourseApi {
      * @param course    수정될 데이터
      * @return          성공 시 true, 실패 시 false
      */
-    @PUT("/courses/{id}")
+    @PUT("/gongzza/courses/{id}")
     Call<Boolean> updateCourse(@Path("id") int courseId, @Body Course course);
 
     /**
@@ -45,7 +45,7 @@ public interface CourseApi {
      * @param courseId  삭제할 수업의 id
      * @return          성공 시 true, 실패 시  false
      */
-    @DELETE("/courses/{id}")
+    @DELETE("/gongzza/courses/{id}")
     Call<Boolean> deleteCourse(@Path("id") int courseId);
 
     /**
@@ -53,7 +53,7 @@ public interface CourseApi {
      * @param userId    유저 아이디
      * @return          성공 시 유저가 등록한 모든 시간표 데이터 리스트를 리턴
      */
-    @GET("/courses")
+    @GET("/gongzza/courses")
     Call<List<CourseDto>> selectCourseDtoListByUserId(@Query("userId") String userId);
 
 }

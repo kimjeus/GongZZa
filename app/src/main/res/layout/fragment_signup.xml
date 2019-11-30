@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scrollView"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFF">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/signup_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            app:title="회원가입">
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <TextView
+            android:id="@+id/textName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/signup_toolbar"
+            android:layout_alignLeft="@+id/inputName"
+            android:layout_marginTop="30dp"
+            android:text="이름"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/inputName"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/textName"
+            android:inputType="textPersonName"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/textEmailCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/inputName"
+            android:layout_alignLeft="@+id/inputName"
+            android:layout_marginTop="30dp"
+            android:text="Email"
+            android:textSize="15dp" />
+
+
+        <EditText
+            android:id="@+id/inputEmailCheck"
+            android:layout_width="210dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/textEmailCheck"
+            android:layout_alignLeft="@+id/textEmailCheck"
+            android:hint="학교 이메일을 입력하세요"
+            android:inputType="textEmailAddress"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:id="@+id/emailConfirmButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/inputEmailCheck"
+            android:layout_toRightOf="@+id/inputEmailCheck"
+            android:text="인증" />
+
+        <TextView
+            android:id="@+id/textId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/inputEmailCheck"
+            android:layout_alignLeft="@+id/inputEmailCheck"
+            android:layout_marginTop="30dp"
+            android:text="I D"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/inputId"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/textId"
+            android:inputType="textVisiblePassword"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/textPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/inputId"
+            android:layout_alignLeft="@+id/inputId"
+            android:layout_marginTop="30dp"
+            android:text="비밀번호"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/inputPassword"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/textPassword"
+            android:inputType="textPassword"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/textPasswordConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/inputPassword"
+            android:layout_alignLeft="@+id/inputPassword"
+            android:layout_marginTop="30dp"
+            android:text="비밀번호 확인"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/inputPasswordConfirm"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/textPasswordConfirm"
+            android:inputType="textPassword"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/textBirth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/inputPasswordConfirm"
+            android:layout_alignLeft="@+id/inputPasswordConfirm"
+            android:layout_marginTop="30dp"
+            android:text="생년월일"
+            android:textSize="15dp" />
+
+        <DatePicker
+            android:id="@+id/inputBirth"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:layout_below="@+id/textBirth"
+            android:layout_alignLeft="@+id/textBirth"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner"/>
+
+        <Button
+            android:id="@+id/signupedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/inputBirth"
+            android:layout_centerHorizontal="true"
+            android:text="가입하기"
+            android:textSize="25dp" />
+
+    </RelativeLayout>
+
+</ScrollView>

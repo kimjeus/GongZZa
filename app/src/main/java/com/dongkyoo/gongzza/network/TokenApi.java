@@ -13,7 +13,7 @@ import retrofit2.http.POST;
 public interface TokenApi {
 
 
-    @POST("/tokens")
+    @POST("/gongzza/tokens")
     Call<Token> registerToken(@Body Token token);
 
 }

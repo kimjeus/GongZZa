@@ -18,12 +18,12 @@ import retrofit2.http.Query;
  */
 public interface ParticipantApi {
 
-    @POST("/participants")
+    @POST("/gongzza/participants")
     Call<Participant> insertParticipant(@Body Participant participant);
 
-    @DELETE("/participants/posts/{postId}")
+    @DELETE("/gongzza/participants/posts/{postId}")
     Call<Boolean> deleteParticipant(@Path("postId") int postId, @Query("id") String userId);
 
-    @GET("/participants/posts/{postId}")
+    @GET("/gongzza/participants/posts/{postId}")
     Call<List<Participant>> selectParticipantListByPostId(@Path("postId") int postId);
 }

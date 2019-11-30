@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FFF">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/login_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:title="로그인">
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <EditText
+        android:id="@+id/id_editText"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="250dp"
+        android:hint="I D" />
+
+    <EditText
+        android:id="@+id/password_editText"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/id_editText"
+        android:layout_centerHorizontal="true"
+        android:inputType="textPassword"
+        android:hint="Password" />
+
+
+    <Button
+        android:layout_width="140dp"
+        android:layout_height="55dp"
+        android:text="로그인"
+        android:id="@+id/loginButton"
+        android:layout_marginRight="@dimen/margin2"
+        android:layout_below="@+id/password_editText"
+        android:layout_toStartOf="@+id/signupButton" />
+
+    <Button
+        android:id="@+id/signupButton"
+        android:layout_width="140dp"
+        android:layout_height="55dp"
+        android:text="회원 가입"
+        android:layout_marginRight="@dimen/margin2"
+        android:layout_alignTop="@+id/loginButton"
+        android:layout_alignEnd="@+id/password_editText" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="아이디 찾기"
+        android:background="#00ff0000"
+        android:id="@+id/findAccount"
+        android:layout_marginRight="@dimen/margin2"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/loginButton"
+        android:layout_toLeftOf="@id/findPassword"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="비밀번호 찾기"
+        android:background="#00ff0000"
+        android:id="@+id/findPassword"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/loginButton"
+        android:layout_alignRight="@id/signupButton" />
+
+</RelativeLayout>

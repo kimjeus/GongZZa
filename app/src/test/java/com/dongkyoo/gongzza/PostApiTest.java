@@ -65,4 +65,14 @@ public class PostApiTest {
         assertEquals(200, response.code());
         assertNotNull(response.body());
     }
+
+    @Test
+    public void selectUserEnrolledPost() throws Exception {
+        PostApi postApi = Networks.retrofit.create(PostApi.class);
+        Call<List<PostDto>> call = postApi.selectUserEnrolledPost(MockData.getMockUser().getId());
+        Response<List<PostDto>> response = call.execute();
+
+        assertEquals(200, response.code());
+        assertNotNull(response.body());
+    }
 }

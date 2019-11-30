@@ -8,7 +8,6 @@ import com.dongkyoo.gongzza.vos.User;
 import org.junit.Test;
 
 import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.Response;
 
 import static org.junit.Assert.assertEquals;
@@ -16,6 +15,15 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public class UserApiUnitTest {
+
+    @Test
+    public void sendAuthenticationEmailTest() throws Exception {
+        UserApi userApi = Networks.retrofit.create(UserApi.class);
+        Call<AuthMail> call = userApi.sendAuthenticateEmail("qwerty6", "dkenl135@naver.com");
+        Response<AuthMail> response = call.execute();
+        assertEquals(200, response.code());
+        assertNotNull(response.body());
+    }
 
     private AuthMail sendAuthenticationEmail() throws Exception {
         UserApi userApi = Networks.retrofit.create(UserApi.class);
@@ -40,7 +48,10 @@ public class UserApiUnitTest {
     @Test
     public void signUpTest() throws Exception {
         UserApi userApi = Networks.retrofit.create(UserApi.class);
-        Call<User> call = userApi.signUp(MockData.getMockUser());
+        User user = MockData.getMockUser();
+        user.setId("qwerty6");
+        user.setEmail("dkenl135@naver.com");
+        Call<User> call = userApi.signUp(user);
         Response<User> response = call.execute();
         assertEquals(200, response.code());
         assertNotNull(response.body());
@@ -53,7 +64,7 @@ public class UserApiUnitTest {
     @Test
     public void getUserByIdPwTest() throws Exception {
         UserApi userApi = Networks.retrofit.create(UserApi.class);
-        Call<User> call = userApi.getUserByIdPw(MockData.getMockUser().getId(), "testPassword");
+        Call<User> call = userApi.login(MockData.getMockUser().getId(), "testPassword");
         Response<User> response = call.execute();
         assertEquals(200, response.code());
         assertNotNull(response.body());
@@ -66,7 +77,7 @@ public class UserApiUnitTest {
     @Test
     public void getUserByIdPwFailure() throws Exception {
         UserApi userApi = Networks.retrofit.create(UserApi.class);
-        Call<User> call = userApi.getUserByIdPw(MockData.getMockUser().getId(), "testPasswordasdfasdf");
+        Call<User> call = userApi.login(MockData.getMockUser().getId(), "testPasswordasdfasdf");
         Response<User> response = call.execute();
         assertEquals(500, response.code());
     }

@@ -1,68 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#F8F8F8"
-    android:orientation="vertical">
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary">
-
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/searchView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:iconifiedByDefault="false"/>
-
-    </androidx.appcompat.widget.Toolbar>
+    android:background="#F8F8F8">
 
     <LinearLayout
-        android:layout_marginTop="@dimen/margin1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="right">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <com.dongkyoo.gongzza.customViews.hashTagView.HashTagView
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginRight="@dimen/margin2"/>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary">
 
-        <com.dongkyoo.gongzza.customViews.hashTagView.HashTagView
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginRight="@dimen/margin2"/>
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconifiedByDefault="false"
+                app:queryHint="제목을 입력하세요"/>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <com.dongkyoo.gongzza.customViews.hashTagRecyclerView.HashTagRecyclerView
+            android:id="@+id/hashTagRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin2"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
 
     </LinearLayout>
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-
-    </androidx.recyclerview.widget.RecyclerView>
-
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="right">
+        android:layout_height="match_parent"
+        android:gravity="right|bottom">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/write_post_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorPrimary"
             android:src="@drawable/round_add_white_18"
             app:tint="#FFFF"
-            android:layout_margin="@dimen/margin3"/>
+            android:layout_margin="@dimen/margin3" />
 
     </RelativeLayout>
 
-</LinearLayout>
+</FrameLayout>

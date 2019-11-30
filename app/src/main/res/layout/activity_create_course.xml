@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/editTextClassName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin3"
+        android:layout_marginLeft="@dimen/margin3"
+        android:layout_marginRight="@dimen/margin3"
+        android:hint = "수업명" />
+
+    <EditText
+        android:id="@+id/editTextProfessorName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextClassName"
+        android:layout_margin="@dimen/margin3"
+        android:hint = "교수명" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/course_info_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextProfessorName"/>
+
+    <Button
+        android:id="@+id/submit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/course_info_recyclerView"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/margin3"
+        android:text="저장" />
+
+</RelativeLayout>
