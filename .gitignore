@@ -2,6 +2,10 @@
 # Created by https://www.gitignore.io/api/git,java,macos,gradle,kotlin,windows,android,androidstudio
 # Edit at https://www.gitignore.io/?templates=git,java,macos,gradle,kotlin,windows,android,androidstudio
 
+# Config
+server.properties
+
+
 ### Android ###
 # Built application files
 *.apk
@@ -200,8 +204,6 @@ $RECYCLE.BIN/
 *.lnk
 
 ### Gradle ###
-.gradle
-
 # Ignore Gradle GUI config
 gradle-app.setting
 

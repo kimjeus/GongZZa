@@ -1,92 +1,95 @@
 package com.dongkyoo.gongzza.vos;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 
 public class Post {
 
     private int id;
+    private String userId;
     private String title;
     private String content;
-    private Date startAt;
-    private Date endAt;
-    private Date createdAt;
-    private int totalNumOfParticipants;
-    private int currentNumOfParticipants;
     private String titleImageUrl;
-    private List<HashTag> hashTagList;
+    private int totalNumParticipants;
+    private Date meetDateTime;
+    private Date createdAt;
 
     public Post() {
     }
 
-    public Post(int id, String title, String content, Date startAt, Date endAt, Date createdAt, int totalNumOfParticipants, int currentNumOfParticipants, String titleImageUrl, List<HashTag> hashTagList) {
+    public Post(int id, String userId, String title, String content, Date meetDateTime, Date createdAt, int totalNumParticipants, String titleImageUrl) {
         this.id = id;
+        this.userId = userId;
         this.title = title;
         this.content = content;
-        this.startAt = startAt;
-        this.endAt = endAt;
+        this.meetDateTime = meetDateTime;
         this.createdAt = createdAt;
-        this.totalNumOfParticipants = totalNumOfParticipants;
-        this.currentNumOfParticipants = currentNumOfParticipants;
+        this.totalNumParticipants = totalNumParticipants;
         this.titleImageUrl = titleImageUrl;
-        this.hashTagList = hashTagList;
     }
 
     public int getId() {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getTitle() {
         return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getContent() {
         return content;
     }
 
-    public Date getStartAt() {
-        return startAt;
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    public Date getEndAt() {
-        return endAt;
+    public Date getMeetDateTime() {
+        return meetDateTime;
+    }
+
+    public void setMeetDateTime(Date meetDateTime) {
+        this.meetDateTime = meetDateTime;
     }
 
     public Date getCreatedAt() {
         return createdAt;
     }
 
-    public int getTotalNumOfParticipants() {
-        return totalNumOfParticipants;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public int getCurrentNumOfParticipants() {
-        return currentNumOfParticipants;
+    public int getTotalNumParticipants() {
+        return totalNumParticipants;
+    }
+
+    public void setTotalNumParticipants(int totalNumParticipants) {
+        this.totalNumParticipants = totalNumParticipants;
     }
 
     public String getTitleImageUrl() {
         return titleImageUrl;
     }
 
-    public List<HashTag> getHashTagList() {
-        return hashTagList;
+    public void setTitleImageUrl(String titleImageUrl) {
+        this.titleImageUrl = titleImageUrl;
     }
 
-    @Override
-    public String toString() {
-        return "Post{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", startAt=" + startAt +
-                ", endAt=" + endAt +
-                ", createdAt=" + createdAt +
-                ", totalNumOfParticipants=" + totalNumOfParticipants +
-                ", currentNumOfParticipants=" + currentNumOfParticipants +
-                ", titleImageUrl='" + titleImageUrl + '\'' +
-                ", hashTagList=" + hashTagList +
-                '}';
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     @Override
@@ -95,19 +98,31 @@ public class Post {
         if (!(o instanceof Post)) return false;
         Post post = (Post) o;
         return id == post.id &&
-                totalNumOfParticipants == post.totalNumOfParticipants &&
-                currentNumOfParticipants == post.currentNumOfParticipants &&
+                userId.equals(post.userId) &&
+                totalNumParticipants == post.totalNumParticipants &&
                 Objects.equals(title, post.title) &&
                 Objects.equals(content, post.content) &&
-                Objects.equals(startAt, post.startAt) &&
-                Objects.equals(endAt, post.endAt) &&
+                Objects.equals(meetDateTime, post.meetDateTime) &&
                 Objects.equals(createdAt, post.createdAt) &&
-                Objects.equals(titleImageUrl, post.titleImageUrl) &&
-                Objects.equals(hashTagList, post.hashTagList);
+                Objects.equals(titleImageUrl, post.titleImageUrl);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, content, startAt, endAt, createdAt, totalNumOfParticipants, currentNumOfParticipants, titleImageUrl, hashTagList);
+        return Objects.hash(id, userId, title, content, meetDateTime, createdAt, totalNumParticipants, titleImageUrl);
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "id=" + id +
+                ", userId='" + userId + '\'' +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", meetDateTime=" + meetDateTime +
+                ", createdAt=" + createdAt +
+                ", totalNumParticipants=" + totalNumParticipants +
+                ", titleImageUrl='" + titleImageUrl + '\'' +
+                '}';
     }
 }

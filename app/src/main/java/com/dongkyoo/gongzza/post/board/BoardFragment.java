@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.dongkyoo.gongzza.MockData;
 import com.dongkyoo.gongzza.R;
 
+import java.util.Arrays;
+
 /**
  * 작성자: 이동규
  * 게시판 목록을 보여주는 프래그먼트
@@ -66,7 +68,7 @@ public class BoardFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(new BoardRecyclerAdapter(
-                MockData.getMockPostList()
+                Arrays.asList(MockData.getMockPostDto())
         ));
     }
 

@@ -5,7 +5,7 @@
     <data>
         <variable
             name="post"
-            type="com.dongkyoo.gongzza.vos.Post" />
+            type="com.dongkyoo.gongzza.dtos.PostDto" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -51,7 +51,7 @@
                 android:id="@+id/content_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{post.content}"
+                android:text="@{post.title}"
                 android:textSize="16sp"
                 android:layout_toRightOf="@id/title_image_cardView"
                 android:layout_below="@id/title_textView"

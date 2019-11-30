@@ -4,23 +4,49 @@ import java.util.Objects;
 
 public class HashTag {
 
+    private int id;
+    private int postId;
     private String color;
-    private String content;
+    private String title;
 
     public HashTag() {
     }
 
-    public HashTag(String color, String content) {
+    public HashTag(String color, String title) {
         this.color = color;
-        this.content = content;
+        this.title = title;
+    }
+
+    public int getPostId() {
+        return postId;
+    }
+
+    public void setPostId(int postId) {
+        this.postId = postId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getColor() {
         return color;
     }
 
-    public String getContent() {
-        return content;
+    public String getTitle() {
+        return title;
     }
 
     @Override
@@ -29,19 +55,23 @@ public class HashTag {
         if (!(o instanceof HashTag)) return false;
         HashTag hashTag = (HashTag) o;
         return color.equals(hashTag.color) &&
-                content.equals(hashTag.content);
+                title.equals(hashTag.title) &&
+                id == hashTag.id &&
+                postId == hashTag.postId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(color, content);
+        return Objects.hash(color, title, id, postId);
     }
 
     @Override
     public String toString() {
         return "HashTag{" +
                 "color='" + color + '\'' +
-                ", content='" + content + '\'' +
+                ", title='" + title + '\'' +
+                ", id='" + id + '\'' +
+                ", postId='" + postId + '\'' +
                 '}';
     }
 }

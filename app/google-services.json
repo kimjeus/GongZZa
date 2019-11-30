@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "724887292991",
+    "firebase_url": "https://gongzza-7492c.firebaseio.com",
+    "project_id": "gongzza-7492c",
+    "storage_bucket": "gongzza-7492c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:724887292991:android:c41ee3ff6eb200cb0e7c8a",
+        "android_client_info": {
+          "package_name": "com.dongkyoo.gongzza"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "724887292991-u88rbvfctnke0lo3a6u06m06vi6n75j1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBu2kXJZlx0FReS2ONha5kdo4NhoLTxIyc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "724887292991-u88rbvfctnke0lo3a6u06m06vi6n75j1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

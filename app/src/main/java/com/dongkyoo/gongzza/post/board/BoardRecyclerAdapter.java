@@ -11,16 +11,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.dongkyoo.gongzza.R;
 import com.dongkyoo.gongzza.databinding.ItemBoardBinding;
-import com.dongkyoo.gongzza.vos.Post;
+import com.dongkyoo.gongzza.dtos.PostDto;
 
 import java.util.List;
 
 public class BoardRecyclerAdapter extends RecyclerView.Adapter<BoardRecyclerAdapter.ViewHolder> {
 
     private static final int DEFAULT_VIEW_TYPE = 0;
-    private List<Post> postList;
+    private List<PostDto> postList;
 
-    public BoardRecyclerAdapter(@NonNull List<Post> postList) {
+    public BoardRecyclerAdapter(@NonNull List<PostDto> postList) {
         this.postList = postList;
     }
 
@@ -67,7 +67,7 @@ public class BoardRecyclerAdapter extends RecyclerView.Adapter<BoardRecyclerAdap
             hashTagRecyclerView.setAdapter(adapter);
         }
 
-        void setPost(Post post) {
+        void setPost(PostDto post) {
             ItemBoardBinding binding = DataBindingUtil.bind(itemView);
             binding.setPost(post);
 

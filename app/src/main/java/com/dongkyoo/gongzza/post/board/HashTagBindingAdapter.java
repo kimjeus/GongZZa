@@ -9,7 +9,7 @@ public class HashTagBindingAdapter {
 
     @BindingAdapter("hashTag")
     public static void hashTag(HashTagView hashTagView, HashTag tag) {
-        hashTagView.setText(tag.getContent());
+        hashTagView.setText(tag.getTitle());
         hashTagView.setColor(tag.getColor());
         hashTagView.setEditMode(false);
     }
